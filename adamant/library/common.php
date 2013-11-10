@@ -1,4 +1,5 @@
 <?php
+if(!defined('ADAMANT')) exit(1);
 /**
  * Queue management constants
  * */
@@ -14,8 +15,10 @@ define("ADAMANT_ACTION_PRIORITY_LOW",3);
  * @param string $string
  * @return string
  */
-function _($string) {
-	return $string;
+if ( !function_exists('_') ) {
+	function _($string) {
+		return $string;
+	}
 }
 
 /**
@@ -24,7 +27,7 @@ function _($string) {
  * @param string $s
  * @return bool
  */
-function fltr($s) {
+function filter_safe_path_components($s) {
 	return preg_match("/^[a-z0-9_]+$/",$s);
 }
 
